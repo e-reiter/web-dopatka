@@ -10,7 +10,7 @@ public class HalloWeltController {
     private static final String vorlage = "Hallo ";
     private long counter;
 
-    @GetMapping("/halloo")
+    @GetMapping("/hallo")
     public HalloWelt hallo(@RequestParam(value = "name", defaultValue = "Welt") String name){
         return new HalloWelt(counter++, vorlage+name);
     }
