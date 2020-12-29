@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HalloWeltController {
     private static final String vorlage = "Hallo ";
-    private long zaehler;
+    private long counter;
 
-    @GetMapping("/hallo")
+    @GetMapping("/halloo")
     public HalloWelt hallo(@RequestParam(value = "name", defaultValue = "Welt") String name){
-        return new HalloWelt(zaehler++, vorlage+name);
+        return new HalloWelt(counter++, vorlage+name);
     }
 
 
