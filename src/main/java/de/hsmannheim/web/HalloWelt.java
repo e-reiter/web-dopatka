@@ -14,5 +14,7 @@ public class HalloWelt {
     @Setter
     private final String inhalt;
 
+    // Test Kai
+
 
 }
