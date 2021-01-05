@@ -1,6 +1,9 @@
 package de.hsmannheim.web.artikelverwaltung;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,29 +11,56 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TreeMap;
 
-@RestController
+@Controller
 public class ArtikelController {
-private long counter=100000;
-TreeMap<Long, Artikel> artikelList = new TreeMap<>();
+    private long counter = 100000;
+    private Model model;
+    TreeMap<Long, Artikel> artikelList = new TreeMap<>();
+//index(Alle artikel), Show(ein artikel), Store(response für speichern), Edit(request für ARtikel ändern),
+// Destroy(artikel löschen), Add(hinzufügen)
 
-
-
-    @GetMapping("/neu")
-    public Artikel anlegen(@RequestParam(value = "name", defaultValue = "leer") String name,
-                           @RequestParam(value ="price", defaultValue = "0.00") double price){
-        artikelList.put(counter++, new Artikel(name,price));
-        return artikelList.get(counter-1);
+    @GetMapping("/test")
+    public String show(@RequestParam(name="name") String name, Model model) {
+    model.addAttribute("name", artikelList.get(counter-1).toString());
+    return "test";
     }
 
-    @GetMapping("/anzeigen")
-    public TreeMap<Long, Artikel> anzeigen(){
-        return artikelList;
 
+    @GetMapping("/index")
+    public String index(){
+
+        return "index";
     }
 
-    @GetMapping("/loeschen")
-    public void loeschen(@RequestParam(value="artikelnr") long artikelnr){
 
+    @GetMapping("/show")
+    public String show(){
+
+        return "show";
     }
+
+
+    @GetMapping("/store")
+    public String store(){
+
+        return "store";
+    }
+
+
+    @GetMapping("/destroy")
+    public String edit(){
+
+        return "destroy";
+    }
+
+    @GetMapping("/add")
+    public String add(){
+
+        return "add";
+    }
+
+
+
+
 
 }
