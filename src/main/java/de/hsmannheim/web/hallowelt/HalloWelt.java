@@ -1,4 +1,4 @@
-package de.hsmannheim.web;
+package de.hsmannheim.web.hallowelt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

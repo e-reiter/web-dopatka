@@ -1,4 +1,4 @@
-package de.hsmannheim.web;
+package de.hsmannheim.web.hallowelt;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
