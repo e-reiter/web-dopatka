@@ -1,4 +1,4 @@
-package de.hsmannheim.web;
+package de.hsmannheim.web.hallowelt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +14,7 @@ public class HalloWelt {
     @Setter
     private final String inhalt;
 
-    // Test Kai
+
 
 
 }
