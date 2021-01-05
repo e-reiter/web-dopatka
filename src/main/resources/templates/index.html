@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<style>
+    html{
+        background-color: lightgrey;
+        font-family: Century Gothic;
+    }
+    h1{
+        background-color: red;
+        padding: 20px;
+        border: solid black 3px;
+    }
+    .example_c {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: white;
+    padding: 10px;
+    border: 3px solid black;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    }
+    .example_c:hover {
+    color: #ffffff !important;
+    background: #CC9900;
+    border-color: #CC9900;
+    transition: all 0.4s ease 0s;
+}
+</style>
 </head>
 <body>
-<input type = "button" onclick ="location.href='/neu'" value="Test"/>
-abcs
+<h1>Artikelverwaltung A-1 (Spring)</h1>
+
+<input class="example_c" type = "button" onclick ="location.href='/new'" value="Neuen Artikel anlegen"/>
+<input class="example_c" type = "button" onclick ="location.href='/edit'" value="Artikel editieren"/>
+<input class="example_c" type = "button" onclick ="location.href='/delete'" value="Artikel löschen"/>
+
+<h2>Liste der Artikel</h2>
+
+
+
+
 </body>
 </html>
