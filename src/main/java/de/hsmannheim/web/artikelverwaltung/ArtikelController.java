@@ -16,7 +16,7 @@ public class ArtikelController {
     private long counter = 100000;
     private Model model;
     TreeMap<Long, Artikel> artikelList = new TreeMap<>();
-//index(Alle artikel), Show(ein artikel), Store(response für speichern), Edit(request für ARtikel ändern),
+//index(Alle artikel), Show(ein artikel), Store(response für speichern), Edit(request für Artikel ändern),
 // Destroy(artikel löschen), Add(hinzufügen)
 
     @GetMapping("/test")
@@ -32,6 +32,17 @@ public class ArtikelController {
         return "index";
     }
 
+    @GetMapping("/create")
+    public String add(){
+
+        return "create";
+    }
+
+    @GetMapping("/store")
+    public String store(){
+
+        return "show";
+    }
 
     @GetMapping("/show")
     public String show(){
@@ -39,24 +50,23 @@ public class ArtikelController {
         return "show";
     }
 
+    @GetMapping("/edit")
+    public String edit(){
 
-    @GetMapping("/store")
-    public String store(){
+        return "edit";
+    }
 
-        return "store";
+    @GetMapping("/update")
+    public String update(){
+
+        return "show";
     }
 
 
     @GetMapping("/destroy")
-    public String edit(){
+    public String destroy(){
 
-        return "destroy";
-    }
-
-    @GetMapping("/add")
-    public String add(){
-
-        return "add";
+        return "index";
     }
 
 
