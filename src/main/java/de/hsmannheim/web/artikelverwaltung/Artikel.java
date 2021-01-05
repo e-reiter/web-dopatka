@@ -6,10 +6,6 @@ import lombok.Setter;
 
 @AllArgsConstructor
 public class Artikel {
-    @Getter
-    @Setter
-    private final long artikelnr;
-
 
     @Getter
     @Setter
