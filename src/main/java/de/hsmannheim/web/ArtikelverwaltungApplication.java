@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HalloWeltApplication {
+public class ArtikelverwaltungApplication {
 
 	//TEST2
 	public static void main(String[] args) {
-		SpringApplication.run(HalloWeltApplication.class, args);
+		SpringApplication.run(ArtikelverwaltungApplication.class, args);
 	}
 
 }
