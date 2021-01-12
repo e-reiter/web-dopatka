@@ -3,8 +3,12 @@
 <head>
     <title>Artikel Bearbeiten</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link  th:href="@{style.css}" rel="stylesheet">
 </head>
 <body>
+<h1>Artikel Bearbeiten</h1>
+<input class="example_c" type="button" onclick="location.href='/'" value="Home"/>
+
 <p th:text="'Artikel Nummer: '+${articlenumber} + ' Artikel:' +${name} + ' Preis: ' + ${price}"/>
 
 <form action="update">

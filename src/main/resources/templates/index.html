@@ -3,39 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-    html{
-        background-color: lightgrey;
-        font-family: Century Gothic;
-    }
-    h1{
-        background-color: red;
-        padding: 20px;
-        border: solid black 3px;
-    }
-    .example_c {
-    color: black;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: white;
-    padding: 10px;
-    border: 3px solid black;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
-    }
-    .example_c:hover {
-    color: #ffffff !important;
-    background: #CC9900;
-    border-color: #CC9900;
-    transition: all 0.4s ease 0s;
-}
-</style>
+    <link th:href="@{style.css}" rel="stylesheet">
+
 </head>
 <body>
 <h1>Artikelverwaltung A-1 (Spring)</h1>
-<input class="example_c" type = "button" onclick ="location.href='/index'" value="Home"/>
-<input class="example_c" type = "button" onclick ="location.href='/create'" value="Neuen Artikel anlegen"/>
-<input class="example_c" type = "button" onclick ="location.href='/show'" value="Zeige Artikel"/>
+<input class="example_c" type="button" onclick="location.href='/create'" value="Neuen Artikel anlegen"/>
 
 <h2>Artikel Anzeigen</h2>
 <form action="show">
@@ -52,17 +25,22 @@
     <input type="submit" value="Bearbeiten">
 </form>
 
+<h2>Artikel Löschen</h2>
+<form action="destroy">
+    <label for="delNumber">Artikelnummer des zu löschenden Artikels:</label>
+    <input type="text" name="id" id="delNumber"><br/>
+    <input type="submit" value="Löschen">
+</form>
+
 <br/>
 
 <h2>Alle Artikel</h2>
-<tr th:each="article: ${articles}">
-    <td th:text="${article.key}" >Artikel Nummer: </td>
-    <td th:text="${article.value.name}">Name:</td>
-    <td th:text="${article.value.price}">Preis:</td>
-
-
-
-</tr>
-
+<table>
+    <tr th:each="article: ${articles}">
+        <td th:text="${article.key}">Artikel Nummer:</td>
+        <td th:text="${article.value.name}">Name:</td>
+        <td th:text="${article.value.price}">Preis:</td>
+    </tr>
+</table>
 </body>
 </html>
