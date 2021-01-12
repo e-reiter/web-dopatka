@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 import java.util.TreeMap;
 
 @Controller
 public class ArtikelController {
-    private long counter = 100000;
     private Model model;
-   // TreeMap<Long, Artikel> artikelList = new TreeMap<>();
-    ArrayList<Artikel> artikelList = new ArrayList<>();
+    ArtikelRepository artikelRepository = new ArtikelRepository();
 
 
     @GetMapping("/test")
@@ -28,32 +27,45 @@ public class ArtikelController {
     }
 
 
+    @GetMapping("/")
+    public String index(Model model) {
+        artikelRepository.add(new Artikel("Test1", 22.0));
+        artikelRepository.add(new Artikel("Test2", 27.0));
+        artikelRepository.add(new Artikel("Test3", 92.0));
+
+
+        model.addAttribute("articles", artikelRepository.getArtikelMap());
+        return "index";
+    }
+
     @GetMapping("/index")
-    public String index() {
+    public String home() {
 
         return "index";
     }
 
+
     @GetMapping("/create")
-    public String add(@RequestParam(name = "name") String name,
-                      @RequestParam(name = "price") Double price, Model model) {
+    public String add(@RequestParam(name = "name", required = false, defaultValue = "false") String name,
+                      @RequestParam(name = "price", required = false) Double price, Model model) {
         model.addAttribute("name", name);
         model.addAttribute("price", price);
-      //Geht nicht. Nullpointerexception wenn man versucht auf die liste zuzugreifen. Sowohl mit TreeMap als auch mit Arraylist...
-        //i weiß nemmer woida :(
-        //  artikelList.add(new Artikel(name,price));
+
+        if (!name.equals("false"))
+            artikelRepository.add(new Artikel(name, price));
+
 
         return "create";
     }
 
-    @GetMapping("/store")
-    public String store() {
-
-        return "show";
-    }
 
     @GetMapping("/show")
-    public String show() {
+    public String showAr(@RequestParam(name = "id", required = false, defaultValue = "0") Long id,
+                         Model model) {
+
+        model.addAttribute("articlenumber", id);
+        model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
+        model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
 
         return "show";
     }
@@ -75,6 +87,12 @@ public class ArtikelController {
     public String destroy() {
 
         return "index";
+    }
+
+
+    @GetMapping("/fill")
+    public void fill() {
+
     }
 
 

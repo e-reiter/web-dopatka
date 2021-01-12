@@ -34,12 +34,20 @@
 <body>
 <h1>Artikelverwaltung A-1 (Spring)</h1>
 <input class="example_c" type = "button" onclick ="location.href='/index'" value="Home"/>
-<input class="example_c" type = "button" onclick ="location.href='/create.html'" value="Neuen Artikel anlegen"/>
+<input class="example_c" type = "button" onclick ="location.href='/create'" value="Neuen Artikel anlegen"/>
 <input class="example_c" type = "button" onclick ="location.href='/show'" value="Zeige Artikel"/>
 
 
 
 
+<tr th:each="article: ${articles}">
+    <td th:text="${article.key}" >Artikel Nummer: </td>
+    <td th:text="${article.value.name}">Name:</td>
+    <td th:text="${article.value.price}">Preis:</td>
+
+
+
+</tr>
 
 </body>
 </html>
