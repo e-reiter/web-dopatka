@@ -1,12 +1,6 @@
 package de.hsmannheim.web.artikelverwaltung;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 
