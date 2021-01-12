@@ -37,9 +37,24 @@
 <input class="example_c" type = "button" onclick ="location.href='/create'" value="Neuen Artikel anlegen"/>
 <input class="example_c" type = "button" onclick ="location.href='/show'" value="Zeige Artikel"/>
 
+<h2>Artikel Anzeigen</h2>
+<form action="show">
+    <label for="number">Artikelnummer:</label>
+    <input type="text" name="id" id="number"><br/>
+    <input type="submit" value="Suchen">
+</form>
 
 
+<h2>Artikel Bearbeiten</h2>
+<form action="edit">
+    <label for="editNumber">Artikelnummer:</label>
+    <input type="text" name="id" id="editNumber"><br/>
+    <input type="submit" value="Bearbeiten">
+</form>
 
+<br/>
+
+<h2>Alle Artikel</h2>
 <tr th:each="article: ${articles}">
     <td th:text="${article.key}" >Artikel Nummer: </td>
     <td th:text="${article.value.name}">Name:</td>

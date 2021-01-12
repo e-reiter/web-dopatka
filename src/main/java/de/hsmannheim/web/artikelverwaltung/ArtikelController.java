@@ -26,9 +26,10 @@ public class ArtikelController {
         return "test";
     }
 
-
+    //TODO: Umgehen das bei refresh artikel dupliziert werden
     @GetMapping("/")
     public String index(Model model) {
+
         artikelRepository.add(new Artikel("Test1", 22.0));
         artikelRepository.add(new Artikel("Test2", 27.0));
         artikelRepository.add(new Artikel("Test3", 92.0));
@@ -62,37 +63,66 @@ public class ArtikelController {
     @GetMapping("/show")
     public String showAr(@RequestParam(name = "id", required = false, defaultValue = "0") Long id,
                          Model model) {
-
-        model.addAttribute("articlenumber", id);
-        model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
-        model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
-
+        if (artikelRepository.getArtikelMap().containsKey(id)) {
+            model.addAttribute("articlenumber", id);
+            model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
+            model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
+        }
         return "show";
     }
 
     @GetMapping("/edit")
-    public String edit() {
+    public String edit(@RequestParam(name = "id") Long id, Model model) {
+        if (artikelRepository.getArtikelMap().containsKey(id)) {
+            model.addAttribute("articlenumber", id);
+            model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
+            model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
+        }
 
         return "edit";
+
     }
+
+
+
+
+
+
 
     @GetMapping("/update")
-    public String update() {
+    public String update(@RequestParam(name = "id") Long id,
+    @RequestParam(name = "name", required = false, defaultValue = "false") String name,
+    @RequestParam(name = "price", required = false, defaultValue = "-1") Double price, Model model) {
 
-        return "show";
+
+        //show article
+        if (artikelRepository.getArtikelMap().containsKey(id)) {
+            model.addAttribute("articlenumber", id);
+            model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
+            model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
+        }
+
+
+        if (!name.equals("false")) {
+            artikelRepository.getArtikelMap().get(id).setName(name);
+
+        }
+
+        if (price != -1) {
+            artikelRepository.getArtikelMap().get(id).setPrice(price);
+        }
+
+
+        return "redirect:/show?id="+id;
     }
+
+
 
 
     @GetMapping("/destroy")
     public String destroy() {
 
         return "index";
-    }
-
-
-    @GetMapping("/fill")
-    public void fill() {
-
     }
 
 

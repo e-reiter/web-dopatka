@@ -1,10 +1,24 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Artikel Bearbeiten</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<p th:text="'Artikel Nummer: '+${articlenumber} + ' Artikel:' +${name} + ' Preis: ' + ${price}"/>
+
+<form action="update">
+
+    <input type="hidden" th:value="${articlenumber}" th:attr="name='id'"/>
+
+    <label for="name">Neuer Name:</label>
+    <input type="text" name="name" id="name"/><br/>
+
+    <label for="price">Neuer Preis(mit . trennen):</label>
+    <input type="text" id="price" name="price"/>
+    <input type="submit" value="Änderungen Absenden"/>
+
+
+</form>
 </body>
 </html>

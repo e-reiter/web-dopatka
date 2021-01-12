@@ -9,7 +9,9 @@ public class Artikel {
 
     @Getter
     @Setter
-    private final String name;
+    private  String name;
+
+
 
     @Getter
     @Setter
