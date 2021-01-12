@@ -1,22 +1,12 @@
 package de.hsmannheim.web.artikelverwaltung;
 
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
 
 @Controller
 public class ArtikelController {
-    private Model model;
     ArtikelRepository artikelRepository = new ArtikelRepository();
 
 
@@ -26,24 +16,13 @@ public class ArtikelController {
         return "test";
     }
 
-    //TODO: Umgehen das bei refresh artikel dupliziert werden
+
     @GetMapping("/")
     public String index(Model model) {
-
-        artikelRepository.add(new Artikel("Test1", 22.0));
-        artikelRepository.add(new Artikel("Test2", 27.0));
-        artikelRepository.add(new Artikel("Test3", 92.0));
-
-
         model.addAttribute("articles", artikelRepository.getArtikelMap());
         return "index";
     }
 
-    @GetMapping("/index")
-    public String home() {
-
-        return "index";
-    }
 
 
     @GetMapping("/create")
@@ -52,9 +31,10 @@ public class ArtikelController {
         model.addAttribute("name", name);
         model.addAttribute("price", price);
 
-        if (!name.equals("false"))
+        if (!name.equals("false")) {
             artikelRepository.add(new Artikel(name, price));
-
+            return "redirect:/show?id=" + (artikelRepository.getCounter() - 1);
+        }
 
         return "create";
     }
@@ -84,15 +64,10 @@ public class ArtikelController {
     }
 
 
-
-
-
-
-
     @GetMapping("/update")
     public String update(@RequestParam(name = "id") Long id,
-    @RequestParam(name = "name", required = false, defaultValue = "false") String name,
-    @RequestParam(name = "price", required = false, defaultValue = "-1") Double price, Model model) {
+                         @RequestParam(name = "name", required = false, defaultValue = "false") String name,
+                         @RequestParam(name = "price", required = false, defaultValue = "-1") Double price, Model model) {
 
 
         //show article
@@ -113,16 +88,15 @@ public class ArtikelController {
         }
 
 
-        return "redirect:/show?id="+id;
+        return "redirect:/show?id=" + id;
     }
 
 
-
-
     @GetMapping("/destroy")
-    public String destroy() {
+    public String destroy(@RequestParam(name = "id") Long id, Model model) {
+        artikelRepository.getArtikelMap().remove(id);
 
-        return "index";
+        return "redirect:/";
     }
 
 
