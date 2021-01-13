@@ -33,7 +33,8 @@ public class ArtikelController {
 
         if (!name.equals("false")) {
             artikelRepository.add(new Artikel(name, price));
-            return "redirect:/show?id=" + (artikelRepository.getCounter() - 1);
+           // return "redirect:/show?id=" + (artikelRepository.getCounter() - 1);
+            return "redirect:/";
         }
 
         return "create";
