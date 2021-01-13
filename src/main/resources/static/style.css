@@ -2,11 +2,7 @@
         background-color: lightgray;
         font-family: Century Gothic;
     }
-    h1{
-        background-color: #4CAF50;
-        padding: 20px;
-        border: solid black 3px;
-    }
+
     .btn {
     color: black;
     text-transform: uppercase;
@@ -57,5 +53,35 @@ div {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+}
+
+#allArticles {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#allArticles td, #allArticles th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#allArticles tr:nth-child(even){background-color: #f2f2f2;}
+
+#allArticles tr:hover {background-color: #ddd;}
+
+#allArticles th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #4CAF50;
+  color: white;
+  font-size: 20px;
 }
 

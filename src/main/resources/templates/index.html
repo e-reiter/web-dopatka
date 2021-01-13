@@ -7,7 +7,10 @@
 
 </head>
 <body>
-<h1>Artikelverwaltung A-1 (Spring)</h1>
+<div class="header">
+    <h1>Artikelverwaltung</h1>
+    <p>Spring Framework Demo</p>
+</div>
 
 
 <!--- OSBOLET - EVTL LÖSCHEN?
@@ -35,11 +38,12 @@
 
 
 <h2>Alle Artikel</h2>
-<table>
+<table id="allArticles">
     <tr>
         <th>Artikel Nummer:</th>
         <th>Artikel Name:</th>
         <th>Preis</th>
+        <th colspan="2">Aktion</th>
 
     </tr>
     <tr th:each="article: ${articles}">
