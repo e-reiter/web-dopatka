@@ -7,8 +7,19 @@
 </head>
 <body>
 <h1>Artikel Bearbeiten</h1>
-<input class="example_c" type="button" onclick="location.href='/'" value="Home"/>
-
+<input class="btn" type="button" onclick="location.href='/'" value="Home"/>
+<table>
+    <tr>
+        <th>ArtikelNr:</th>
+        <th>Aktueller Name:</th>
+        <th>Aktueller Preis:</th>
+    </tr>
+    <tr>
+        <td th:text="${articlenumber}"></td>
+        <td th:text="${name}"></td>
+        <td th:text="${price}"></td>
+    </tr>
+</table>
 <p th:text="'Artikel Nummer: '+${articlenumber} + ' Artikel:' +${name} + ' Preis: ' + ${price}"/>
 
 <form action="update">

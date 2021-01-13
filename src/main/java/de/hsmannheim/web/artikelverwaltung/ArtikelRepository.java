@@ -13,9 +13,9 @@ public class ArtikelRepository {
     TreeMap<Long, Artikel> artikelMap = new TreeMap<>();
 
     public ArtikelRepository(){
-        this.add(new Artikel("Test1", 22.0));
-        this.add(new Artikel("Test2", 27.0));
-        this.add(new Artikel("Test3", 92.0));
+        this.add(new Artikel("Maus", 22.0));
+        this.add(new Artikel("Tastatur", 27.0));
+        this.add(new Artikel("Heizung", 92.99));
     }
 
     public void add(Artikel artikel) {

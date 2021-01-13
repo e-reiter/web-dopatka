@@ -8,38 +8,56 @@
 </head>
 <body>
 <h1>Artikelverwaltung A-1 (Spring)</h1>
-<input class="example_c" type="button" onclick="location.href='/create'" value="Neuen Artikel anlegen"/>
 
+
+<!--- OSBOLET - EVTL LÖSCHEN?
 <h2>Artikel Anzeigen</h2>
 <form action="show">
     <label for="number">Artikelnummer:</label>
     <input type="text" name="id" id="number"><br/>
     <input type="submit" value="Suchen">
 </form>
+-->
+
+<h2>Artikel Anlegen</h2>
+<div>
 
 
-<h2>Artikel Bearbeiten</h2>
-<form action="edit">
-    <label for="editNumber">Artikelnummer:</label>
-    <input type="text" name="id" id="editNumber"><br/>
-    <input type="submit" value="Bearbeiten">
+<form action="create">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name"><br/>
+
+    <label for="price">Preis(mit . trennen):</label>
+    <input type="text" id="price" name="price">
+    <input type="submit" value="Anlegen">
 </form>
+</div>
 
-<h2>Artikel Löschen</h2>
-<form action="destroy">
-    <label for="delNumber">Artikelnummer des zu löschenden Artikels:</label>
-    <input type="text" name="id" id="delNumber"><br/>
-    <input type="submit" value="Löschen">
-</form>
-
-<br/>
 
 <h2>Alle Artikel</h2>
 <table>
+    <tr>
+        <th>Artikel Nummer:</th>
+        <th>Artikel Name:</th>
+        <th>Preis</th>
+
+    </tr>
     <tr th:each="article: ${articles}">
-        <td th:text="${article.key}">Artikel Nummer:</td>
-        <td th:text="${article.value.name}">Name:</td>
-        <td th:text="${article.value.price}">Preis:</td>
+        <td th:text="${article.key}">article.key</td>
+        <td th:text="${article.value.name}">article.name</td>
+        <td th:text="${article.value.price}">article.price</td>
+        <td>
+            <form action="destroy"><input type="submit" value="Löschen">
+            <input type="hidden" th:value="${article.key}" th:attr="name='id'"/>
+            </form>
+        </td>
+
+        <td>
+            <form action="edit">
+                <input type="submit" value="Bearbeiten">
+                <input type="hidden" th:value="${article.key}" th:attr="name='id'"/>
+            </form>
+        </td>
     </tr>
 </table>
 </body>
