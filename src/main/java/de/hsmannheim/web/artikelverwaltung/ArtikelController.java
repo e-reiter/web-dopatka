@@ -10,19 +10,11 @@ public class ArtikelController {
     ArtikelRepository artikelRepository = new ArtikelRepository();
 
 
-    @GetMapping("/test")
-    public String show(@RequestParam(name = "name") String name, Model model) {
-        model.addAttribute("name", name);
-        return "test";
-    }
-
-
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("articles", artikelRepository.getArtikelMap());
+        model.addAttribute("articles", artikelRepository.getArticleMap());
         return "index";
     }
-
 
 
     @GetMapping("/create")
@@ -31,36 +23,40 @@ public class ArtikelController {
         model.addAttribute("name", name);
         model.addAttribute("price", price);
 
-        if (!name.equals("false")) {
+        if (!name.equals("false") && price > -1) {
             artikelRepository.add(new Artikel(name, price));
-           // return "redirect:/show?id=" + (artikelRepository.getCounter() - 1);
             return "redirect:/";
-        }
+        } else {
 
-        return "create";
+            return "create";
+        }
     }
 
 
     @GetMapping("/show")
     public String showAr(@RequestParam(name = "id", required = false, defaultValue = "0") Long id,
                          Model model) {
-        if (artikelRepository.getArtikelMap().containsKey(id)) {
+        if (artikelRepository.getArticleMap().containsKey(id)) {
             model.addAttribute("articlenumber", id);
-            model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
-            model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
+            model.addAttribute("name", artikelRepository.getArticleMap().get(id).getName());
+            model.addAttribute("price", artikelRepository.getArticleMap().get(id).getPrice());
         }
         return "show";
     }
 
+
     @GetMapping("/edit")
     public String edit(@RequestParam(name = "id") Long id, Model model) {
-        if (artikelRepository.getArtikelMap().containsKey(id)) {
+        if (artikelRepository.getArticleMap().containsKey(id)) {
             model.addAttribute("articlenumber", id);
-            model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
-            model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
+            model.addAttribute("name", artikelRepository.getArticleMap().get(id).getName());
+            model.addAttribute("price", artikelRepository.getArticleMap().get(id).getPrice());
+            return "edit";
+        } else {
+
+            return "redirect:/";
         }
 
-        return "edit";
 
     }
 
@@ -72,20 +68,19 @@ public class ArtikelController {
 
 
         //show article
-        if (artikelRepository.getArtikelMap().containsKey(id)) {
+        if (artikelRepository.getArticleMap().containsKey(id)) {
             model.addAttribute("articlenumber", id);
-            model.addAttribute("name", artikelRepository.getArtikelMap().get(id).getName());
-            model.addAttribute("price", artikelRepository.getArtikelMap().get(id).getPrice());
+            model.addAttribute("name", artikelRepository.getArticleMap().get(id).getName());
+            model.addAttribute("price", artikelRepository.getArticleMap().get(id).getPrice());
         }
 
-
         if (!name.equals("false")) {
-            artikelRepository.getArtikelMap().get(id).setName(name);
+            artikelRepository.getArticleMap().get(id).setName(name);
 
         }
 
         if (price != -1) {
-            artikelRepository.getArtikelMap().get(id).setPrice(price);
+            artikelRepository.getArticleMap().get(id).setPrice(price);
         }
 
 
@@ -94,8 +89,8 @@ public class ArtikelController {
 
 
     @GetMapping("/destroy")
-    public String destroy(@RequestParam(name = "id") Long id, Model model) {
-        artikelRepository.getArtikelMap().remove(id);
+    public String destroy(@RequestParam(name = "id") Long id) {
+        artikelRepository.getArticleMap().remove(id);
 
         return "redirect:/";
     }

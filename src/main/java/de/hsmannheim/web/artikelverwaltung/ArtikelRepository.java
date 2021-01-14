@@ -6,11 +6,11 @@ import java.util.TreeMap;
 
 public class ArtikelRepository {
     @Getter
-    private static long counter = 1000000;
+    private  long counter = 1000000;
 
     @Setter
     @Getter
-    TreeMap<Long, Artikel> artikelMap = new TreeMap<>();
+    TreeMap<Long, Artikel> articleMap = new TreeMap<>();
 
     public ArtikelRepository(){
         this.add(new Artikel("Maus", 22.0));
@@ -19,7 +19,7 @@ public class ArtikelRepository {
     }
 
     public void add(Artikel artikel) {
-        artikelMap.put(counter++, artikel);
+        articleMap.put(counter++, artikel);
     }
 
 }

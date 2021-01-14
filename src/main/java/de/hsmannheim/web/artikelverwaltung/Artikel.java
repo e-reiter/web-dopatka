@@ -11,8 +11,6 @@ public class Artikel {
     @Setter
     private  String name;
 
-
-
     @Getter
     @Setter
     private double price;

@@ -7,8 +7,8 @@
 </head>
 <body>
 <h1>Artikel Bearbeiten</h1>
-<input class="btn" type="button" onclick="location.href='/'" value="Home"/>
-<table>
+<input type="button" onclick="location.href='/'" value="Home"/>
+<table id="allArticles">
     <tr>
         <th>ArtikelNr:</th>
         <th>Aktueller Name:</th>
@@ -20,7 +20,7 @@
         <td th:text="${price}"></td>
     </tr>
 </table>
-<p th:text="'Artikel Nummer: '+${articlenumber} + ' Artikel:' +${name} + ' Preis: ' + ${price}"/>
+
 
 <form action="update">
 

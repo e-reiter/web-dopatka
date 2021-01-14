@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Artikelverwaltung A-1</title>
     <link th:href="@{style.css}" rel="stylesheet">
 
 </head>
@@ -13,27 +13,16 @@
 </div>
 
 
-<!--- OSBOLET - EVTL LÖSCHEN?
-<h2>Artikel Anzeigen</h2>
-<form action="show">
-    <label for="number">Artikelnummer:</label>
-    <input type="text" name="id" id="number"><br/>
-    <input type="submit" value="Suchen">
-</form>
--->
-
 <h2>Artikel Anlegen</h2>
 <div>
+    <form action="create">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br/>
 
-
-<form action="create">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name"><br/>
-
-    <label for="price">Preis(mit . trennen):</label>
-    <input type="text" id="price" name="price">
-    <input type="submit" value="Anlegen">
-</form>
+        <label for="price">Preis(mit . trennen):</label>
+        <input type="text" id="price" name="price">
+        <input type="submit" value="Anlegen">
+    </form>
 </div>
 
 
@@ -52,7 +41,7 @@
         <td th:text="${article.value.price}">article.price</td>
         <td>
             <form action="destroy"><input type="submit" value="Löschen">
-            <input type="hidden" th:value="${article.key}" th:attr="name='id'"/>
+                <input type="hidden" th:value="${article.key}" th:attr="name='id'"/>
             </form>
         </td>
 

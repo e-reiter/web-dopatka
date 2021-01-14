@@ -12,7 +12,7 @@
 	<artifactId>web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HalloWelt</name>
-	<description>HalloWelt für WEB bei Prof. Dopatka</description>
+	<description>HalloWelt und Artikel für WEB bei Prof. Dopatka</description>
 
 	<properties>
 		<java.version>11</java.version>

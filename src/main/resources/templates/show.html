@@ -7,10 +7,19 @@
 </head>
 <body>
 <h1>Artikel Anzeigen</h1>
-<input class="btn" type="button" onclick="location.href='/'" value="Home"/>
-
-<p th:text="'Artikel Nummer: '+${articlenumber} + ' Artikel:' +${name} + ' Preis: ' + ${price}"/>
-
+<input id="btn" type="button" onclick="location.href='/'" value="Home"/>
+<table id="allArticles">
+    <tr>
+        <th>ArtikelNr:</th>
+        <th>Name:</th>
+        <th>Preis:</th>
+    </tr>
+    <tr>
+        <td th:text="${articlenumber}"></td>
+        <td th:text="${name}"></td>
+        <td th:text="${price}"></td>
+    </tr>
+</table>
 
 </body>
 </html>
