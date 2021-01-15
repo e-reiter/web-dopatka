@@ -19,7 +19,7 @@ public class ArtikelController {
 
     @GetMapping("/create")
     public String add(@RequestParam(name = "name", required = false, defaultValue = "false") String name,
-                      @RequestParam(name = "price", required = false) Double price, Model model) {
+                      @RequestParam(name = "price", required = false, defaultValue = "-1") Double price, Model model) {
         model.addAttribute("name", name);
         model.addAttribute("price", price);
 
